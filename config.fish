@@ -1,8 +1,4 @@
-if status is-interactive
-    # Remove the default login greeting
-    set -g fish_greeting ""
-end
-
+set -l __startup_time (date +%s%3N)
 mise activate fish | source
 
 set -gx ANDROID_HOME $HOME/Android/Sdk
@@ -31,3 +27,9 @@ set -gx PROJECT_DIRS $HOME/Projects $HOME/Work $HOME/Code \
 set -gx EDITOR zed
 
 fish_add_path $HOME/.local/bin
+
+if status is-interactive
+    starship init fish | source
+    set -l duration (math "($(date +%s%3N) - $__startup_time) / 1000")
+    echo "🐠 Fish shell startup time: $duration ms"
+end
