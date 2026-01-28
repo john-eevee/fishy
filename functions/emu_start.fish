@@ -17,7 +17,7 @@ function emu_start --description "Start an Android emulator"
             else if test $arg = "--wipe-data"
                 set extra_args "$extra_args -wipe-data"
             else if test $arg = "--cold-boot"
-                set extra_args "$extra_args -cold-boot"
+                set extra_args "$extra_args -no-snapshot-load"
             end
         else
             set emu_name $arg
