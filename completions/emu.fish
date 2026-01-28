@@ -4,9 +4,9 @@
 function __fish_emu_list_names
     set -l avd_path "$HOME/.android/avd"
     if test -d "$avd_path"
-        for avd_dir in "$avd_path"/*.avd
-            if test -d "$avd_dir"
-                basename "$avd_dir" .avd
+        for ini_file in "$avd_path"/*.ini
+            if test -f "$ini_file"
+                basename "$ini_file" .ini
             end
         end
     end
