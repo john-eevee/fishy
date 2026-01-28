@@ -1,6 +1,6 @@
 function emu_start --description "Start an Android emulator"
     if test (count $argv) -eq 0
-        echo "Usage: emu_start <emulator_name> [--no-window] [--wipe-data]"
+        echo "Usage: emu_start <emulator_name> [--no-window] [--wipe-data] [--cold-boot]"
         echo ""
         echo "Available emulators:"
         emu_list
@@ -16,6 +16,10 @@ function emu_start --description "Start an Android emulator"
     
     if contains -- "--wipe-data" $argv
         set extra_args "$extra_args -wipe-data"
+    end
+    
+    if contains -- "--cold-boot" $argv
+        set extra_args "$extra_args -cold-boot"
     end
     
     if not command -v emulator &>/dev/null
