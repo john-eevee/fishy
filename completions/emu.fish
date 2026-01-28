@@ -32,6 +32,7 @@ complete -c emu -n "not __fish_seen_subcommand_from list start stop status creat
 complete -c emu -n "__fish_seen_subcommand_from start" -a "(__fish_emu_list_names)" -f
 complete -c emu -n "__fish_seen_subcommand_from start" -l "no-window" -d "Start without GUI window"
 complete -c emu -n "__fish_seen_subcommand_from start" -l "wipe-data" -d "Wipe user data"
+complete -c emu -n "__fish_seen_subcommand_from start" -l "cold-boot" -d "Perform cold boot"
 
 # Stop command - running emulator names
 complete -c emu -n "__fish_seen_subcommand_from stop" -a "(__fish_emu_list_running)" -f
