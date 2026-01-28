@@ -7,19 +7,26 @@ function emu_start --description "Start an Android emulator"
         return 1
     end
     
-    set -l emu_name $argv[1]
+    set -l emu_name ""
     set -l extra_args ""
     
-    if contains -- "--no-window" $argv
-        set extra_args "$extra_args -no-window"
+    for arg in $argv
+        if string match -q -- '--*' $arg
+            if test $arg = "--no-window"
+                set extra_args "$extra_args -no-window"
+            else if test $arg = "--wipe-data"
+                set extra_args "$extra_args -wipe-data"
+            else if test $arg = "--cold-boot"
+                set extra_args "$extra_args -cold-boot"
+            end
+        else
+            set emu_name $arg
+        end
     end
     
-    if contains -- "--wipe-data" $argv
-        set extra_args "$extra_args -wipe-data"
-    end
-    
-    if contains -- "--cold-boot" $argv
-        set extra_args "$extra_args -cold-boot"
+    if test -z $emu_name
+        echo "Error: Emulator name not provided"
+        return 1
     end
     
     if not command -v emulator &>/dev/null
