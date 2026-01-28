@@ -29,8 +29,9 @@ function emu_start --description "Start an Android emulator"
     
     echo "Starting emulator: $emu_name"
     emulator -avd $emu_name $extra_args &
+    set -l pid (jobs -p)
     
-    echo "Emulator starting... (PID: $!)"
+    echo "Emulator starting... (PID: $pid)"
     sleep 3
     echo "Monitor at: ~/.android/avd/$emu_name.avd/emulator-pid"
 end
