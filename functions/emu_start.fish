@@ -8,16 +8,16 @@ function emu_start --description "Start an Android emulator"
     end
     
     set -l emu_name ""
-    set -l extra_args ""
+    set -l extra_args
     
     for arg in $argv
         if string match -q -- '--*' $arg
             if test $arg = "--no-window"
-                set extra_args "$extra_args -no-window"
+                set extra_args $extra_args -no-window
             else if test $arg = "--wipe-data"
-                set extra_args "$extra_args -wipe-data"
+                set extra_args $extra_args -wipe-data
             else if test $arg = "--cold-boot"
-                set extra_args "$extra_args -no-snapshot-load"
+                set extra_args $extra_args -no-snapshot-load
             end
         else
             set emu_name $arg
