@@ -21,12 +21,12 @@ end
 
 # Main command completions
 complete -c emu -f
-complete -c emu -n "__fish_use_subcommand_from_list" -a "list" -d "List all available emulators"
-complete -c emu -n "__fish_use_subcommand_from_list" -a "start" -d "Start an emulator"
-complete -c emu -n "__fish_use_subcommand_from_list" -a "stop" -d "Stop emulator(s)"
-complete -c emu -n "__fish_use_subcommand_from_list" -a "status" -d "Show connected devices and emulators"
-complete -c emu -n "__fish_use_subcommand_from_list" -a "create" -d "Create a new emulator"
-complete -c emu -n "__fish_use_subcommand_from_list" -a "delete" -d "Delete an emulator"
+complete -c emu -n "not __fish_seen_subcommand_from list start stop status create delete" -a "list" -d "List all available emulators"
+complete -c emu -n "not __fish_seen_subcommand_from list start stop status create delete" -a "start" -d "Start an emulator"
+complete -c emu -n "not __fish_seen_subcommand_from list start stop status create delete" -a "stop" -d "Stop emulator(s)"
+complete -c emu -n "not __fish_seen_subcommand_from list start stop status create delete" -a "status" -d "Show connected devices and emulators"
+complete -c emu -n "not __fish_seen_subcommand_from list start stop status create delete" -a "create" -d "Create a new emulator"
+complete -c emu -n "not __fish_seen_subcommand_from list start stop status create delete" -a "delete" -d "Delete an emulator"
 
 # Start command - emulator names
 complete -c emu -n "__fish_seen_subcommand_from start" -a "(__fish_emu_list_names)" -f
@@ -41,4 +41,4 @@ complete -c emu -n "__fish_seen_subcommand_from delete" -a "(__fish_emu_list_nam
 
 # Create command - API levels and image types
 complete -c emu -n "__fish_seen_subcommand_from create" -a "30 31 32 33 34 35" -d "API Level"
-complete -c emu -n "__fish_seen_subcommand_from create; and __fish_seen_subcommand_from create; and test (count (commandline -opc | grep -v '^emu$' | grep -v '^create$')) -eq 3" -a "default google_apis google_apis_playstore" -d "System Image Type"
+complete -c emu -n "__fish_seen_subcommand_from create; and __fish_seen_subcommand_from create; and test (count (commandline -opc | grep -v \"^emu\\\$\" | grep -v \"^create\\\$\")) -eq 3" -a "default google_apis google_apis_playstore" -d "System Image Type"
