@@ -28,6 +28,11 @@ set -gx EDITOR zed
 
 fish_add_path $HOME/.local/bin
 
+
+if test -f $HOME/.config/fish/.env
+  source $HOME/.config/fish/.env
+end
+
 if status is-interactive
     starship init fish | source
     set -l duration (math "($(date +%s%3N) - $__startup_time) / 1000")
