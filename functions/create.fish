@@ -36,8 +36,8 @@ function create --description "Create files or directories with automatic parent
             # Get the parent directory
             set -l parent (dirname $item)
             
-            # Create parent directories if they don't exist (skip if parent is current dir or empty)
-            if test -n "$parent"; and test "$parent" != "."; and not test -d $parent
+            # Create parent directories if they don't exist (skip if parent is current dir)
+            if test "$parent" != "."; and not test -d $parent
                 mkdir -p $parent
                 if test $status -ne 0
                     echo "✗ Failed to create parent directories for: $item"
