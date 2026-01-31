@@ -11,7 +11,7 @@ function merge --description "Merge N files content into a destination file"
             continue
         end
 
-        if test $parsing_dest -eq 1
+        if test "$parsing_dest" -eq 1
             set dest_file $arg
             set parsing_dest 0
             continue
@@ -47,6 +47,12 @@ function merge --description "Merge N files content into a destination file"
         cat "$file" >> "$dest_file"
     end
 
-    echo "Successfully merged" (count $source_files) "file(s) into '$dest_file'"
+    set -l file_count (count $source_files)
+    set -l file_word "file"
+    if test $file_count -gt 1
+        set file_word "files"
+    end
+    
+    echo "Successfully merged $file_count $file_word into '$dest_file'"
     return 0
 end
