@@ -33,20 +33,20 @@ function merge --description "Merge N files content into a destination file"
 
     # Check if source files exist
     for file in $source_files
-        if not test -f $file
+        if not test -f "$file"
             echo "Error: Source file '$file' does not exist"
             return 1
         end
     end
 
     # Create or truncate the destination file
-    echo -n "" > $dest_file
+    echo -n "" > "$dest_file"
 
     # Merge files content
     for file in $source_files
-        cat $file >> $dest_file
+        cat "$file" >> "$dest_file"
     end
 
-    echo "Successfully merged "(count $source_files)" file(s) into '$dest_file'"
+    echo "Successfully merged" (count $source_files) "file(s) into '$dest_file'"
     return 0
 end
