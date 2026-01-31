@@ -52,7 +52,7 @@ function merge --description "Merge N files content into a destination file"
     if test $file_count -gt 1
         set file_word "files"
     end
-    
+
     echo "Successfully merged $file_count $file_word into '$dest_file'"
     return 0
 end
