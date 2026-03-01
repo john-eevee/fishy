@@ -35,7 +35,7 @@ function emu_start --description "Start an Android emulator"
     end
     
     echo "Starting emulator: $emu_name"
-    emulator -avd $emu_name $extra_args &
+    emulator -avd $emu_name $extra_args &> /dev/null &
     set -l pid (jobs -p)
     
     echo "Emulator starting... (PID: $pid)"

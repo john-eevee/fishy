@@ -5,7 +5,7 @@ function z --description 'Launcher for Zed with Niri resize fix'
     # 2. Run the Niri fix in a background block so the shell stays snappy
     begin
         # Give Zed a moment to map the window
-        sleep 0.6
+        sleep 1
 
         # Get the window ID (checking for both common app_ids)
         set -l zed_id (niri msg --json windows | jq -r '.[] | select(.app_id == "dev.zed.Zed" or .app_id == "Zed") | .id' | head -n 1)
