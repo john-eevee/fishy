@@ -1,3 +1,12 @@
+set -U fish_greeting
+if status is-login
+  fish-greet ""
+  cat /etc/chocola.txt
+  if test (tty) = /dev/tty1
+    start-hyprland
+  end
+  return 0
+end
 set -l __startup_time (date +%s%3N)
 mise activate fish | source
 
@@ -36,5 +45,7 @@ end
 if status is-interactive
     starship init fish | source
     set -l duration (math "($(date +%s%3N) - $__startup_time) / 1000")
-    echo "🐠 Fish shell startup time: $duration ms"
+    fish-greet "i took $duration ms to get ready!"
+    return 0
 end
+
