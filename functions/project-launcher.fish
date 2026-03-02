@@ -7,9 +7,18 @@ function project-launcher --description "Launch a project in a predefined layout
   end
 
   set LAYOUT (printf "1. Dev Layout (Left 80 / Right 20)\n2. Dual Project (2x2 Grid)" | fzf --prompt="Select Layout > " --height=40% --layout=reverse --border=rounded)
+  set ACTIVE_WS (hyprctl workspaces -j | jq '.[].id')
 
-  if test -z "$LAYOUT"
-      exit 0
+  set TARGET_WS 1
+
+  for i in (seq 1 10)
+      if not contains $i $ACTIVE_WS
+          set TARGET_WS $i
+          break
+      end
+    if test -z "$LAYOUT"
+        exit 0
+    end
   end
 
   switch "$LAYOUT"
