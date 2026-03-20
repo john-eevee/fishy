@@ -33,7 +33,7 @@ end
 
 set -gx PROJECT_DIRS $HOME/Projects $HOME/Work $HOME/Code \
     $HOME/projects $HOME/work $HOME/code
-set -gx EDITOR zed
+set -gx EDITOR nvim
 
 fish_add_path $HOME/.local/bin
 

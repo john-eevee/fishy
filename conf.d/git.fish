@@ -43,6 +43,7 @@ end
 # Simple aliases
 alias gc="git commit"
 alias gac="git commit -a"
+alias gam="git commit -am"
 alias gco="git checkout"
 alias gcb="git checkout -b"
 alias gp="git push"

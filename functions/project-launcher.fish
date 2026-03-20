@@ -27,10 +27,8 @@ function project-launcher --description "Launch a project in a predefined layout
           sleep 0.4
           hyprctl dispatch exec "kitty --working-directory \"$TARGET_DIR\" --title OpenCode"
           sleep 0.4
-          hyprctl dispatch splitratio exact 0.8
           hyprctl dispatch exec "kitty --working-directory \"$TARGET_DIR\" --title TaskRunner"
           sleep 0.4
-          hyprctl dispatch splitratio exact 0.8
       case "2*"
           hyprctl dispatch exec "kitty --working-directory \"$TARGET_DIR\" --title Proj1-Main"
           sleep 0.4
@@ -40,7 +38,6 @@ function project-launcher --description "Launch a project in a predefined layout
           sleep 0.2
           hyprctl dispatch exec "kitty --working-directory \"$TARGET_DIR\" --title Proj1-Tasks"
           sleep 0.4
-          hyprctl dispatch splitratio exact 0.8
           hyprctl dispatch
   end
 end
