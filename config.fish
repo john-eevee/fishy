@@ -1,7 +1,6 @@
 set -U fish_greeting
 if status is-login
   fish-greet ""
-  cat /etc/chocola.txt
   if test (tty) = /dev/tty1
     start-hyprland
   end
